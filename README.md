@@ -44,6 +44,9 @@ You can then continue with spinning up a new minio instance (default will be por
 kubectl get VolumeSnapshots
 '''
 
+For a snap restore demo, you can scale to 0 replicas, restore the snap, and scale replicas to 1. The command to scale replicas is:
+kubectl scale deploy minio-deployment --replicas=0
+
 ** NOTE: ** Both arrays are present in the PSO config, so your PVC may go to the second array
 
 # Ansible Demo
