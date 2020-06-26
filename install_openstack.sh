@@ -48,14 +48,15 @@ echo "" >> ~/.bashrc
 # Should be able to remove this after 1.23 is released
 
 yum install redhat-lsb-core libibverbs -y
-
+cd /root
 git clone https://git.openstack.org/openstack-dev/devstack
-cd /root/openstack
-git checkout stable/rocky
+cd /root/devstack
+#git checkout stable/pike
 /root/devstack/tools/create-stack-user.sh
 mkdir /home/stack
 chown stack:stack /home/stack
 chmod 777 /root -R
+cp -rfv /root/newstack_testdrive/openstack/local.conf /root/devstack
 
 echo "please execute /root/devstack/stack.sh after su - stack"
 
