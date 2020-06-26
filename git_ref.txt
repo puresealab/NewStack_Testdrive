@@ -16,3 +16,18 @@ git pull --all
 
 # clone the repo
 git clone https://github.com/ccrow42/newstack
+
+
+# checkout branch:
+git checkout openstack
+git push origin openstack
+
+
+####
+git checkout master
+git log --graph --oneline --decorate --all
+# This command is long, so shorten it using aliases
+git config --global alias.lg 'log --graph --oneline --decorate --all'
+git merge openstack
+git lg
+git branch -d openstack # delete the branch
