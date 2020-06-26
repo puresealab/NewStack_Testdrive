@@ -84,7 +84,10 @@ mv ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/mod
 cp ~/newstack_testdrive/purefa_pod.py ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/modules/
 
 cd ~
+adduser stack
+su stack -c 'git clone https://git.openstack.org/openstack-dev/devstack'
 git clone https://git.openstack.org/openstack-dev/devstack
-cp -rfv ~/newstack_testdrive/openstack/local.conf ~/devstack
-cd ~/devstack
-~/devstack/stack.sh
+cp -rfv ~/newstack_testdrive/openstack/local.conf /home/stack/devstack
+chown stack:stack /home/stack/devstack/local.conf
+
+su stack -c '~/devstack/stack.sh'
