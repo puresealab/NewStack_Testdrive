@@ -68,8 +68,6 @@ done
 #systemctl restart multipathd
 #/usr/sbin/multipath -r
 
-git config --global user.name "ccrow42"
-git config --global user.email chris@ccrow.org
 
 # Save a second and create a mount point in /mnt - Actually, Ansible will create the mount point.
 # mkdir /mnt/ansible-src
@@ -77,17 +75,13 @@ git config --global user.email chris@ccrow.org
 # Typing "ansible-playbook" everytime is a hassle...
 echo "" >> ~/.bashrc
 echo "alias ap='ansible-playbook'" >> ~/.bashrc
-echo "alias P='cd ~/ansibletest/Playbooks'" >> ~/.bashrc
+echo "alias P='cd ~/newstack_testdrive/ansible_playbooks'" >> ~/.bashrc
 source ~/.bashrc
 
-#Disable SElinux
-sudo setenforce 0
-sudo sed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/selinux/config && cat /etc/selinux/config
-sudo sed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/sysconfig/selinux && cat /etc/sysconfig/selinux
 
 # Should be able to remove this after 1.23 is released
 mv ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/modules/purefa_pod.py ~/purefa_pod.orig
-cp ~/ansibletest/purefa_pod.py ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/modules/
+cp ~/newstack_testdrive/purefa_pod.py ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/modules/
 
 #generate an ssh key for local login:
 ssh-keygen -t rsa -N '' -q -f ~/.ssh/id_rsa
@@ -95,7 +89,7 @@ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
 #clone required repositories
 git clone https://github.com/kubernetes-sigs/kubespray ~/kubespray
-cp -rfv ~/newstack/kubetd/inventory/testdrive ~/kubespray/inventory/
+cp -rfv ~/newstack_testdrive/inventory/testdrive ~/kubespray/inventory/
 cd ~/kubespray
 
 # Install prereqs as we now have pip3
@@ -108,4 +102,4 @@ ansible-playbook -i inventory/testdrive/inventory.ini cluster.yml -b
 helm repo add pure https://purestorage.github.io/helm-charts
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 helm repo update
-helm install pure-storage-driver pure/pure-csi --namespace default -f ~/newstack/kubetd/pso_values.yaml
+helm install pure-storage-driver pure/pure-csi --namespace default -f ~/newstack_testdrive/pso_values.yaml

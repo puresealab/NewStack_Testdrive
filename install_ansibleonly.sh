@@ -21,7 +21,7 @@ done
 
 
 
-# Install SDK 
+# Install SDK
 
 echo "####  Installing the Pure Storage SDK  ####"
 pip3 install purestorage
@@ -46,7 +46,7 @@ set tabstop=4           " number of visual spaces per TAB
 EOF
 
 # We need to change the hostname of this host. Note that it's "linux" on the FA
-# and it's "Linux" on the host. 
+# and it's "Linux" on the host.
 
 echo "#### Changing hostname ####"
 
@@ -77,8 +77,8 @@ git config --global user.email bkuebler@gmail.com
 # Typing "ansible-playbook" everytime is a hassle...
 echo "" >> ~/.bashrc
 echo "alias ap='ansible-playbook'" >> ~/.bashrc
-echo "alias P='cd ~/ansibletest/Playbooks'" >> ~/.bashrc
+echo "alias P='cd ~/newstack_testdrive/ansible_playbooks'" >> ~/.bashrc
 
 # Should be able to remove this after 1.23 is released
 mv ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/modules/purefa_pod.py ~/purefa_pod.orig
-cp ~/ansibletest/purefa_pod.py ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/modules/
+cp ~/newstack_testdrive/purefa_pod.py ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/modules/
