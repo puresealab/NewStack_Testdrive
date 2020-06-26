@@ -84,6 +84,18 @@ mv ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/mod
 cp ~/newstack_testdrive/purefa_pod.py ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/modules/
 
 yum install redhat-lsb-core -y
+
+git clone https://git.openstack.org/openstack-dev/devstack
+cd /root/openstack
+git checkout stable/rocky
+/root/devstack/tools/create-stack-user.sh
+
+su stack -c 'git clone https://git.openstack.org/openstack-dev/devstack /home/stack/devstack'
+cp -rfv /root/newstack_testdrive/openstack/local.conf /home/stack/devstack
+cd /home/stack/devstack
+su stack -c 'git checkout stable/rocky'
+
+
 #cd ~
 #adduser stack
 #cd /home/stack
