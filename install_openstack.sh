@@ -85,9 +85,10 @@ cp ~/newstack_testdrive/purefa_pod.py ~/.ansible/collections/ansible_collections
 
 cd ~
 adduser stack
+cd /home/stack
 su stack -c 'git clone https://git.openstack.org/openstack-dev/devstack'
 git clone https://git.openstack.org/openstack-dev/devstack
-cp -rfv ~/newstack_testdrive/openstack/local.conf /home/stack/devstack
+cp -rfv /root/newstack_testdrive/openstack/local.conf /home/stack/devstack
 chown stack:stack /home/stack/devstack/local.conf
 
-su stack -c '~/devstack/stack.sh'
+su stack -c '/home/stack/devstack/stack.sh'
