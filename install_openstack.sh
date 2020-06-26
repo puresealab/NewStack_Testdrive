@@ -47,14 +47,13 @@ echo "" >> ~/.bashrc
 
 # Should be able to remove this after 1.23 is released
 
-yum install redhat-lsb-core libibverbs -y
+yum install redhat-lsb-core libibverbs python3 -y
 cd /root
 git clone https://git.openstack.org/openstack-dev/devstack
 cd /root/devstack
 git checkout stable/train
 /root/devstack/tools/create-stack-user.sh
-mkdir /home/stack
-chown stack:stack /home/stack
+chmod 755 /opt/stack
 chmod 777 /root -R
 cp -rfv /root/newstack_testdrive/openstack/local.conf /root/devstack
 cp -rfv /root/newstack_testdrive/openstack/apache /root/devstack/lib
@@ -65,14 +64,4 @@ echo "please execute /root/devstack/stack.sh after su - stack"
 # chmod 755 /opt/stack seems to allow us to move paste
 
 # The next failure is around this bug: https://bugs.launchpad.net/devstack/+bug/1883468
-# Still working to resolve that one
-
-#cd ~
-#adduser stack
-#cd /home/stack
-#su stack -c 'git clone https://git.openstack.org/openstack-dev/devstack'
-#git clone https://git.openstack.org/openstack-dev/devstack
-#cp -rfv /root/newstack_testdrive/openstack/local.conf /home/stack/devstack
-#chown stack:stack /home/stack/devstack/local.conf
-
-#su stack -c '/home/stack/devstack/stack.sh'
+# Still working to resolve that one. Resolved with the patched apache script. Now we are stuck on stable/train
