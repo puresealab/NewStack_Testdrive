@@ -83,6 +83,7 @@ echo "alias P='cd ~/newstack_testdrive/ansible_playbooks'" >> ~/.bashrc
 mv ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/modules/purefa_pod.py ~/purefa_pod.orig
 cp ~/newstack_testdrive/purefa_pod.py ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/modules/
 
+yum install redhat-lsb-core -y
 cd ~
 adduser stack
 cd /home/stack
