@@ -1,37 +1,4 @@
 #!/bin/bash
-# This is only to be used as a prep for the Pure Test Drive Environment
-# Brian Kuebler 4/17/20
-
-# Install necessary packages, only python2 installed
-
-echo "#####################################"
-
-APACKG=( epel-release python3 python3-pip centos-release-ansible-29 ansible vim python2-jmespath )
-
-
-echo "####  Installing Python3 and Ansible  ####"
-
-for pkg in "${APACKG[@]}";do
-    if yum -q list installed "$pkg" > /dev/null 2>&1; then
-        echo -e "$pkg is already installed"
-    else
-        yum install "$pkg" -y && echo "Successfully installed $pkg"
-    fi
-done
-
-
-
-# Install SDK
-
-echo "####  Installing the Pure Storage SDK  ####"
-pip3 install purestorage
-pip3 install jmespath
-# Install the Pure Storage collection
-
-echo "#### Installing the Purestorage Ansible Collection  ####"
-
-ansible-galaxy collection install purestorage.flasharray
-
 
 echo "####  Making VIM feel right ####"
 
@@ -68,32 +35,29 @@ done
 #systemctl restart multipathd
 #/usr/sbin/multipath -r
 
-git config --global user.name "Brian Kuebler"
-git config --global user.email bkuebler@gmail.com
+git config --global user.name "ccrow42"
+git config --global user.email chris@ccrow.org
 
 # Save a second and create a mount point in /mnt - Actually, Ansible will create the mount point.
 # mkdir /mnt/ansible-src
 
 # Typing "ansible-playbook" everytime is a hassle...
 echo "" >> ~/.bashrc
-echo "alias ap='ansible-playbook'" >> ~/.bashrc
-echo "alias P='cd ~/newstack_testdrive/ansible_playbooks'" >> ~/.bashrc
+
 
 # Should be able to remove this after 1.23 is released
-mv ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/modules/purefa_pod.py ~/purefa_pod.orig
-cp ~/newstack_testdrive/purefa_pod.py ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/modules/
 
-yum install redhat-lsb-core -y
+yum install redhat-lsb-core libibverbs -y
 
 git clone https://git.openstack.org/openstack-dev/devstack
 cd /root/openstack
 git checkout stable/rocky
 /root/devstack/tools/create-stack-user.sh
+mkdir /home/stack
+chown stack:stack /home/stack
+chmod 777 /root -R
 
-su stack -c 'git clone https://git.openstack.org/openstack-dev/devstack /home/stack/devstack'
-cp -rfv /root/newstack_testdrive/openstack/local.conf /home/stack/devstack
-cd /home/stack/devstack
-su stack -c 'git checkout stable/rocky'
+echo "please execute /root/devstack/stack.sh after su - stack"
 
 
 #cd ~
