@@ -51,7 +51,7 @@ yum install redhat-lsb-core libibverbs -y
 cd /root
 git clone https://git.openstack.org/openstack-dev/devstack
 cd /root/devstack
-#git checkout stable/pike
+git checkout stable/train
 /root/devstack/tools/create-stack-user.sh
 mkdir /home/stack
 chown stack:stack /home/stack
