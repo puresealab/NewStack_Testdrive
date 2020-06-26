@@ -1,0 +1,12 @@
+--- a/lib/apache
++++ b/lib/apache
+@@ -95,8 +95,9 @@ function install_apache_uwsgi {
+     pip_install uwsgi
+     pip download uwsgi -c $REQUIREMENTS_DIR/upper-constraints.txt
+     local uwsgi
+- uwsgi=$(ls uwsgi*)
+- tar xvf $uwsgi
++ if [ -f uW*.tar.gz ] ; then mv -f uW*.tar.gz uwsgi-latest.tar.gz; mkdir uwsgi-latest ; fi
++ uwsgi=$(ls uwsgi*.tar.gz)
++ tar xvf $uwsgi -C uwsgi-latest
+     cd uwsgi*/apache2

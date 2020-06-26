@@ -60,6 +60,11 @@ cp -rfv /root/newstack_testdrive/openstack/local.conf /root/devstack
 
 echo "please execute /root/devstack/stack.sh after su - stack"
 
+# Note that the first  failure is on the permissions of the /opt/stack directory
+# chmod 755 /opt/stack seems to allow us to move paste
+
+# The next failure is around this bug: https://bugs.launchpad.net/devstack/+bug/1883468
+# Still working to resolve that one
 
 #cd ~
 #adduser stack
