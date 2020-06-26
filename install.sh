@@ -84,22 +84,47 @@ mv ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/mod
 cp ~/newstack_testdrive/purefa_pod.py ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/modules/
 
 #generate an ssh key for local login:
+echo "#### Generate SSH keys on local install ####"
 ssh-keygen -t rsa -N '' -q -f ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
 #clone required repositories
+echo "#### Clone kubespray repo and copy inventory in to repo ####"
 git clone https://github.com/kubernetes-sigs/kubespray ~/kubespray
 cp -rfv ~/newstack_testdrive/inventory/testdrive ~/kubespray/inventory/
 cd ~/kubespray
 
 # Install prereqs as we now have pip3
+echo "#### Install kubespray prereqs ####"
 pip3 install -r requirements.txt
 
 # Install kubernetes
+echo "#### Install kubernetes ####"
 ansible-playbook -i inventory/testdrive/inventory.ini cluster.yml -b
 
 #Install PSO
+echo "#### Update helm repos and install PSO ####"
 helm repo add pure https://purestorage.github.io/helm-charts
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 helm repo update
 helm install pure-storage-driver pure/pure-csi --namespace default -f ~/newstack_testdrive/kubernetes_yaml/pso_values.yaml
+
+
+# We need to change the hostname of this host. Note that it's "linux" on the FA
+# and it's "Linux" on the host. It was changed by kubespray.
+
+echo "#### Changing hostname ####"
+
+echo "linux" > /etc/hostname
+systemctl restart systemd-hostnamed
+sleep 3
+
+HNAME=$(hostname)
+
+for lname in 'linux';do
+    if [ "$HNAME" = "$lname" ]; then
+        echo "Hostname is linux, matches FlashArray."
+    else
+        echo "Hostname still needs to be changed!"
+    fi
+done
