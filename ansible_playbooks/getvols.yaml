@@ -1,0 +1,29 @@
+---
+- name: Get info for FA
+  hosts: localhost
+  gather_facts: true
+  collections:
+  - purestorage.flasharray
+  vars_files:
+  - testdrive_vars.yaml
+  tasks:
+    - name: Get flasharray info
+      purefa_info:
+        gather_subset: volumes
+        fa_url: "{{ fa1_ip }}"
+        api_token: "{{ fa1_token }}"
+      register: volumes_data
+    - name: show info
+      debug:
+        msg: "{{ volumes_data }}"
+
+    - set_fact:
+        vol_ser: "{{ volumes_data.purefa_info.volumes['ansible-tgt'].serial }}"
+
+    - name: get mp id
+      shell:
+        cmd: /usr/sbin/multipath -ll|grep -i {{ vol_ser }}| awk '{print $2}'
+      register: mpath_dev
+
+    - debug:
+        msg: " mpath device is: {{ mpath_dev.stdout}}. "

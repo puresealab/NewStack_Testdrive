@@ -1,0 +1,64 @@
+---
+- name: Spin up dev env
+  hosts: localhost
+  gather_facts: true
+  collections:
+    - purestorage.flasharray
+  vars_files:
+    - testdrive_vars.yaml
+
+  tasks:
+    - name: Get volume information
+      purefa_info:
+        gather_subset: volumes
+        fa_url: "{{ fa1_ip }}"
+        api_token: "{{ fa1_token }}"
+      register: volumes_data
+
+    - set_fact:
+        src_serial: "{{ volumes_data.purefa_info.volumes[pod_vol].serial }}"
+
+    - name: Take backup snap
+      purefa_snap:
+        name: "{{ pod_vol }}"
+        suffix: snap
+        fa_url: "{{ fa1_ip }}"
+        api_token: "{{ fa1_token }}"
+        state: present
+
+    - name: Create a R/W clone
+      purefa_snap:
+        name: "{{ pod_vol }}"
+        suffix: snap
+        target: "{{ tgt_vol }}"
+        fa_url: "{{ fa1_ip }}"
+        api_token: "{{ fa1_token }}"
+        state: copy
+
+    - name: Overwrite to mounted copy
+      purefa_snap:
+        name: "{{ pod_vol }}"
+        suffix: snap
+        target: "{{ tgt_vol }}"
+        overwrite: true
+        fa_url: "{{ fa1_ip }}"
+        api_token: "{{ fa1_token }}"
+        state: copy
+
+    - name: Map copy to linux host
+      purefa_host:
+        host: "{{ ansible_hostname }}"
+        volume: "{{ tgt_vol }}"
+        fa_url: "{{ fa1_ip }}"
+        api_token: "{{ fa1_token }}"
+
+
+    - name: Delete and eradicate snapshot dev-snap.snap
+      purefa_snap:
+         name: "{{ pod_vol }}"
+         suffix: snap
+         eradicate: true
+         fa_url: "{{ fa1_ip }}"
+         api_token: "{{ fa1_token }}"
+         state: absent
+...
