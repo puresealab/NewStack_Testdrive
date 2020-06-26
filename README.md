@@ -67,4 +67,8 @@ source ~/.bashrc
 
 ## Running the Demo
 
-This demo allows the driver to run playbooks in the ansible_playbooks directory. They are numbered to run through a progression. More notes to come.
+This demo allows the driver to run playbooks in the ansible_playbooks directory. They are numbered to run through a progression.
+
+You can run each playbook with 'ansible-playbook <yaml file>'
+
+More notes to come.
