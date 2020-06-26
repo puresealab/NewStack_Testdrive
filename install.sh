@@ -102,4 +102,4 @@ ansible-playbook -i inventory/testdrive/inventory.ini cluster.yml -b
 helm repo add pure https://purestorage.github.io/helm-charts
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 helm repo update
-helm install pure-storage-driver pure/pure-csi --namespace default -f ~/newstack_testdrive/pso_values.yaml
+helm install pure-storage-driver pure/pure-csi --namespace default -f ~/newstack_testdrive/kubernetes_yaml/pso_values.yaml
