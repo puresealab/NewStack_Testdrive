@@ -1,4 +1,4 @@
-# newstack_testdrive
+# Newstack Testdrive Repository
 
 This repo has scripts to spin up newstack in Pure Storage's test drive
 
@@ -43,6 +43,8 @@ You can then continue with spinning up a new minio instance (default will be por
 '''
 kubectl get VolumeSnapshots
 '''
+
+** NOTE: ** Both arrays are present in the PSO config, so your PVC may go to the second array
 
 # Ansible Demo
 
