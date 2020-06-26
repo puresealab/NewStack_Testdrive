@@ -1,0 +1,18 @@
+#add a file for git to track
+git add <filename>
+
+
+#check status
+git status
+
+#Commit the change
+git commit -m "description"
+
+#Send the changes to the master branch
+git push origin master
+
+#Pull down all changes
+git pull --all
+
+# clone the repo
+git clone https://github.com/ccrow42/newstack
