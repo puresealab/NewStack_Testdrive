@@ -57,6 +57,7 @@ mkdir /home/stack
 chown stack:stack /home/stack
 chmod 777 /root -R
 cp -rfv /root/newstack_testdrive/openstack/local.conf /root/devstack
+cp -rfv /root/newstack_testdrive/openstack/apache /root/devstack/lib
 
 echo "please execute /root/devstack/stack.sh after su - stack"
 
