@@ -56,7 +56,10 @@ git checkout stable/train
 chmod 755 /opt/stack
 chmod 777 /root -R
 cp -rfv /root/newstack_testdrive/openstack/local.conf /root/devstack
-cp -rfv /root/newstack_testdrive/openstack/apache /root/devstack/lib
+#cp -rfv /root/newstack_testdrive/openstack/apache /root/devstack/lib
+#Let's use a patch instead
+git apply /root/newstack_testdrive/openstack/lib_apache.patch
+
 
 echo "please execute /root/devstack/stack.sh after su - stack"
 
