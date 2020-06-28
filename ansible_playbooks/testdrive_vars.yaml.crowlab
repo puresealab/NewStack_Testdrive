@@ -1,8 +1,8 @@
 ansible_python_interpreter: /usr/bin/python3
-fa1_ip: 172.16.3.101
-fa1_token: cd6ba527-a21f-a014-d80b-13687c33402d
-fa2_ip: 172.16.3.111
-fa2_token: ff703c77-4db4-5e84-6734-b2d37acce147
+fa1_ip: 10.0.1.71
+fa1_token: 207fe8f2-35c5-8ded-e358-871cf5c7e0b5
+fa2_ip: 10.0.1.76
+fa2_token: 3e56ccfd-e4a0-f3cc-0829-f0512ef1f715
 demo_vol: ansible-src
 demo_pod: demo-pod
 fa1_iscsi_port: ct0.eth1
