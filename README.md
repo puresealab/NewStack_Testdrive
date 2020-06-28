@@ -72,3 +72,11 @@ This demo allows the driver to run playbooks in the ansible_playbooks directory.
 You can run each playbook with 'ansible-playbook <yaml file>'
 
 More notes to come.
+
+
+# Additional customizations
+
+In order to run in non-test drive labs, it is necessary to modify the array and API keys at the following locations:
+For kubernetes, modify the kubernetes_yaml/pso_values.yaml
+
+More to come...
