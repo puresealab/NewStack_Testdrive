@@ -22,6 +22,8 @@ Note that this will also install all of the ansible bits
 
 ## Running the Demo
 
+The demo scripts are located in the kubernetes_yaml directory. They are designed to be run in order as there may be dependancies.
+
 ### Create the PVC. Check that it is created on the Pure
 ```
 kubectl apply -f 1_createPVC.yaml
@@ -51,7 +53,6 @@ kubectl scale deploy minio-deployment --replicas=0
 
 # Ansible Demo
 
-
 ## Installing the demo
 clone the repo with:
 ```
@@ -71,7 +72,7 @@ This demo allows the driver to run playbooks in the ansible_playbooks directory.
 
 You can run each playbook with 'ansible-playbook <yaml file>'
 
-More notes to come.
+More notes to come...
 
 
 # Additional customizations
