@@ -51,7 +51,7 @@ yum install redhat-lsb-core libibverbs python3 -y
 cd /root
 git clone https://git.openstack.org/openstack-dev/devstack
 cd /root/devstack
-git checkout stable/ussuri
+git checkout stable/train
 
 #Host IP issue. I have no clue why we aren't picking up from local.conf
 #export HOST_IP="10.0.1.215"
@@ -75,4 +75,4 @@ echo "please execute /root/devstack/stack.sh after su - stack"
 # chmod 755 /opt/stack seems to allow us to move paste
 
 # The next failure is around this bug: https://bugs.launchpad.net/devstack/+bug/1883468
-# Still working to resolve that one. Resolved with the patched apache script. Now we are stuck on stable/ussuri
+# Still working to resolve that one. Resolved with the patched apache script. Now we are stuck on stable/train
