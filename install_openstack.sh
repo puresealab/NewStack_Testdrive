@@ -47,7 +47,8 @@ echo "" >> ~/.bashrc
 
 # Should be able to remove this after 1.23 is released
 
-yum install redhat-lsb-core libibverbs python3 -y
+yum install redhat-lsb-core libibverbs python3 python3-devel -y
+sudo python3 -m pip install python-memcached
 cd /root
 git clone https://git.openstack.org/openstack-dev/devstack
 cd /root/devstack
@@ -56,6 +57,7 @@ git checkout stable/train
 #Host IP issue. I have no clue why we aren't picking up from local.conf
 #export HOST_IP="10.0.1.215"
 export HOST_IP="172.16.3.11"
+export USE_PYTHON3=true
 
 
 /root/devstack/tools/create-stack-user.sh
@@ -67,7 +69,10 @@ cp -rfv /root/newstack_testdrive/openstack/local.conf /root/devstack
 git apply /root/newstack_testdrive/openstack/lib_apache.patch
 
 # vanilla install was complaining about a lack of python modules. Installed with PIP
-pip install purestorage
+# Don't use this!
+#pip install purestorage
+
+
 
 echo "please execute /root/devstack/stack.sh after su - stack"
 

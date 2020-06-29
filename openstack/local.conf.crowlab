@@ -7,7 +7,7 @@ NOVA_BRANCH=stable/train
 NOVACLIENT_BRANCH=stable/train
 NEUTRON_BRANCH=stable/train
 SWIFT_BRANCH=stable/train
-
+USE_PYTHON3=True
 
 [[local|localrc]]
 
@@ -19,6 +19,7 @@ SERVICE_PASSWORD=$ADMIN_PASSWORD
 
 # Host IP - get your Server/VM IP address from ip addr command
 HOST_IP=10.0.1.215
+USE_PYTHON3=True
 
 [[post-config|$CINDER_CONF]]
 [DEFAULT]
