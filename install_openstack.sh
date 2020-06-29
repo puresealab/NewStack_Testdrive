@@ -75,8 +75,9 @@ git apply /root/newstack_testdrive/openstack/lib_apache.patch
 #pip install purestorage
 
 
-
+echo "############ PAY ATTENTION ###############"
 echo "please execute /root/devstack/stack.sh after su - stack"
+echo "Also run pip install purestorage as root AFTER executing stack.sh"
 
 # Note that the first  failure is on the permissions of the /opt/stack directory
 # chmod 755 /opt/stack seems to allow us to move paste

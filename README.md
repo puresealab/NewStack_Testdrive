@@ -6,11 +6,11 @@ It currently works with Ansible and Kubernetes
 
 Many thanks are due to kbkuebler for the idea, as well as ansible yaml files.
 
-# Kubernetes with PSO Demo.
+## Kubernetes with PSO Demo.
 
 The following files are in the kube_yaml directory
 
-## Installing the demo
+### Installing the demo
 clone the repo with:
 ```
 git clone https://puresealab/newstack_testdrive
@@ -20,16 +20,16 @@ Run the install.sh script
 
 Note that this will also install all of the ansible bits
 
-## Running the Demo
+### Running the Demo
 
 The demo scripts are located in the kubernetes_yaml directory. They are designed to be run in order as there may be dependancies.
 
-### Create the PVC. Check that it is created on the Pure
+#### Create the PVC. Check that it is created on the Pure
 ```
 kubectl apply -f 1_createPVC.yaml
 ```
 
-### Creates Minio Deployment
+#### Creates Minio Deployment
 ```
 kubectl apply -f 2_minio.yaml
 
@@ -51,9 +51,9 @@ kubectl scale deploy minio-deployment --replicas=0
 
 ** NOTE: ** Both arrays are present in the PSO config, so your PVC may go to the second array
 
-# Ansible Demo
+## Ansible Demo
 
-## Installing the demo
+### Installing the demo
 clone the repo with:
 ```
 git clone https://puresealab/newstack_testdrive
@@ -66,7 +66,7 @@ I would also run:
 source ~/.bashrc
 ```
 
-## Running the Demo
+### Running the Demo
 
 This demo allows the driver to run playbooks in the ansible_playbooks directory. They are numbered to run through a progression.
 
@@ -74,6 +74,13 @@ You can run each playbook with 'ansible-playbook <yaml file>'
 
 More notes to come...
 
+## Openstack demo
+
+This is a little rudamentory. Openstack will build, but it requires a couple of manual steps, and the dashboard and replication will not work... yet.
+
+It is based on the train release due to RHEL7 compatibility and is still building with Python 2.7.
+
+The openstack/example_commands.txt has a few examples to get you started. Also, pay attention to the output of the install_openstack.sh install script.
 
 # Additional customizations
 

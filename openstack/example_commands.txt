@@ -14,9 +14,18 @@ openstack volume type create "Repl"
 cinder type-key "Repl" set replication_enabled='<is> True'
 openstack volume type set Repl --property volume_backend_name=pure-1
 
-openstack volume type create "purefa2"
-openstack volume type set purefa2 --preperty volume_backend_name=purefa2
+# Set up volume backends for types
 
+openstack volume type create "purefa1"
+openstack volume type set purefa1 --property volume_backend_name=pure-1
+
+openstack volume type create "purefa2"
+openstack volume type set purefa2 --property volume_backend_name=pure-2
+
+
+# Create a volume
+
+openstack volume create --size 10 --type purefa1 lun2 
 
 # Troubleshooting:
 cinder service-list
