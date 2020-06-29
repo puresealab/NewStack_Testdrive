@@ -1,0 +1,24 @@
+
+#Allow the user to use openstack and cinder commands
+cd /root/devstack
+source openrc admin admin
+
+# Generic commands
+openstack volume list
+
+cinder type-list
+
+
+# Set up replication
+openstack volume type create "Repl"
+cinder type-key "Repl" set replication_enabled='<is> True'
+openstack volume type set Repl --property volume_backend_name=pure-1
+
+openstack volume type create "purefa2"
+openstack volume type set purefa2 --preperty volume_backend_name=purefa2
+
+
+# Troubleshooting:
+cinder service-list
+journelctl -fu devstack@c-vol
+sudo systemctl restart devstack@c-vol

@@ -64,6 +64,8 @@ cp -rfv /root/newstack_testdrive/openstack/local.conf /root/devstack
 #Let's use a patch instead
 git apply /root/newstack_testdrive/openstack/lib_apache.patch
 
+# vanilla install was complaining about a lack of python modules. Installed with PIP
+pip install purestorage
 
 echo "please execute /root/devstack/stack.sh after su - stack"
 
