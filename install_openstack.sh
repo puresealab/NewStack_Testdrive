@@ -54,7 +54,9 @@ cd /root/devstack
 git checkout stable/train
 
 #Host IP issue. I have no clue why we aren't picking up from local.conf
-export HOST_IP="10.0.1.215"
+#export HOST_IP="10.0.1.215"
+export HOST_IP="172.16.3.11"
+
 
 /root/devstack/tools/create-stack-user.sh
 chmod 755 /opt/stack
