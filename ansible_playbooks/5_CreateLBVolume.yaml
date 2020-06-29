@@ -14,21 +14,3 @@
         api_token: "{{ use_api }}"
         name: lbtest01
         size: 50G
-    - name: Provisioning {{ use_name }}
-      purefa_volume:
-        fa_url: "{{ use_url }}"
-        api_token: "{{ use_api }}"
-        name: lbtest02
-        size: 50G
-    - name: Provisioning {{ use_name }}
-      purefa_volume:
-        fa_url: "{{ use_url }}"
-        api_token: "{{ use_api }}"
-        name: lbtest03
-        size: 50G
-    - name: Provisioning {{ use_name }}
-      purefa_volume:
-        fa_url: "{{ use_url }}"
-        api_token: "{{ use_api }}"
-        name: lbtest04
-        size: 50G
