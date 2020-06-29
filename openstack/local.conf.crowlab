@@ -7,7 +7,7 @@ NOVA_BRANCH=stable/train
 NOVACLIENT_BRANCH=stable/train
 NEUTRON_BRANCH=stable/train
 SWIFT_BRANCH=stable/train
-USE_PYTHON3=True
+#USE_PYTHON3=True
 
 [[local|localrc]]
 
@@ -19,7 +19,7 @@ SERVICE_PASSWORD=$ADMIN_PASSWORD
 
 # Host IP - get your Server/VM IP address from ip addr command
 HOST_IP=10.0.1.215
-USE_PYTHON3=True
+#USE_PYTHON3=True
 
 [[post-config|$CINDER_CONF]]
 [DEFAULT]
@@ -40,8 +40,8 @@ pure_eradicate_on_delete=True
 replication_device = backend_id:fa2,san_ip:10.0.1.76,api_token:3e56ccfd-e4a0-f3cc-0829-f0512ef1f715,type:sync,uniform:true
 use_multipath_for_image_xfer=True
 
-[pure-1]
-volume_backend_name=pure-1
+[pure-2]
+volume_backend_name=pure-2
 volume_driver=cinder.volume.drivers.pure.PureISCSIDriver
 san_ip=10.0.1.76
 pure_api_token=3e56ccfd-e4a0-f3cc-0829-f0512ef1f715

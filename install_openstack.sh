@@ -57,7 +57,9 @@ git checkout stable/train
 #Host IP issue. I have no clue why we aren't picking up from local.conf
 #export HOST_IP="10.0.1.215"
 export HOST_IP="172.16.3.11"
-export USE_PYTHON3=true
+
+
+#export USE_PYTHON3=true
 
 
 /root/devstack/tools/create-stack-user.sh
