@@ -25,9 +25,9 @@ openstack volume type set purefa2 --property volume_backend_name=pure-2
 
 # Create a volume
 
-openstack volume create --size 10 --type purefa1 lun2 
+openstack volume create --size 10 --type purefa1 lun2
 
 # Troubleshooting:
 cinder service-list
-journelctl -fu devstack@c-vol
+journalctl -fu devstack@c-vol
 sudo systemctl restart devstack@c-vol
