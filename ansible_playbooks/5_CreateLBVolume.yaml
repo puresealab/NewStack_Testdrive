@@ -6,6 +6,7 @@
     - purestorage.flasharray
   vars:
     array_usage: []
+    ansible_python_interpreter: /usr/bin/python3
   roles:
     - role: lb
 
