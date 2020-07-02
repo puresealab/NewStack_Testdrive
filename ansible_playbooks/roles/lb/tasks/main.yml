@@ -1,5 +1,7 @@
 ---
 - name: Pure FlashArray Infra Config
+  collections:
+  - purestorage.flasharray
   include_tasks:
     file: "all.yml"
   vars:
@@ -15,4 +17,3 @@
    use_api: "{{ (array_usage|sort(attribute='usage')|first).api }}"
    use_url: "{{ (array_usage|sort(attribute='usage')|first).url }}"
    use_name: "{{ (array_usage|sort(attribute='usage')|first).name }}"
-
