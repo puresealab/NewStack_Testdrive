@@ -2,6 +2,8 @@
 - name: Pure Storage LB example
   hosts: localhost
   gather_facts: no
+  collections:
+    - purestorage.flasharray
   vars:
     array_usage: []
   roles:

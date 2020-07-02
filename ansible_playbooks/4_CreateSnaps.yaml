@@ -54,15 +54,15 @@
         fa_url: "{{ fa1_ip }}"
         api_token: "{{ fa1_token }}"
 
-
-    - name: Delete and eradicate snapshot dev-snap.snap
-      purefa_snap:
-         name: "{{ pod_vol }}"
-         suffix: snap
-         eradicate: true
-         fa_url: "{{ fa1_ip }}"
-         api_token: "{{ fa1_token }}"
-         state: absent
+# Removing to keep the snap around
+#    - name: Delete and eradicate snapshot dev-snap.snap
+#      purefa_snap:
+#         name: "{{ pod_vol }}"
+#         suffix: snap
+#         eradicate: true
+#         fa_url: "{{ fa1_ip }}"
+#         api_token: "{{ fa1_token }}"
+#         state: absent
 
     - name: Get new volume info
       purefa_info:
@@ -96,4 +96,3 @@
         src: '/dev/{{ mpath_tgt.stdout }}'
         state: mounted
 ...
-

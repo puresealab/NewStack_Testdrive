@@ -80,5 +80,6 @@ echo "alias ap='ansible-playbook'" >> ~/.bashrc
 echo "alias P='cd ~/newstack_testdrive/ansible_playbooks'" >> ~/.bashrc
 
 # Should be able to remove this after 1.23 is released
-mv ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/modules/purefa_pod.py ~/purefa_pod.orig
-cp ~/newstack_testdrive/purefa_pod.py ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/modules/
+# Yay 1.23!
+#mv ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/modules/purefa_pod.py ~/purefa_pod.orig
+#cp ~/newstack_testdrive/purefa_pod.py ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/modules/

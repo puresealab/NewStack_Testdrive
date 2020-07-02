@@ -12,3 +12,4 @@ tgt_mount_path: /mnt/ansible-tgt
 orig_volume: linux-lun-01
 tgt_vol: ansible-tgt
 pod_vol: demo-pod::ansible-src
+snap_vol: ansible-snap
