@@ -1,7 +1,5 @@
 ---
 - name: Pure FlashArray Infra Config
-  collections:
-  - purestorage.flasharray
   include_tasks:
     file: "all.yml"
   vars:
