@@ -51,6 +51,23 @@ kubectl scale deploy minio-deployment --replicas=0
 
 ** NOTE: ** Both arrays are present in the PSO config, so your PVC may go to the second array
 
+#### Install PSO Explorer
+
+Pure Service Orchestrator™ Explorer (or PSO Explorer) provides a web based user interface for Pure Service Orchestrator™. It shows details of the persistent volumes and snapshots that have been provisioned using PSO, showing provisioned space, actual used space, performance and growth characteristics. The PSO Explorer dashboard provides a quick overview of the number of volumes, snapshots, storageclasses and arrays in the cluster, in addition to the volume usage, the volume growth over the last 24 hours and cluster-level performance statistics.
+
+Install by running install_pso_explorer.sh
+
+Check status by running
+```
+kubectl get service pso-explorer -n psoexpl
+```
+
+External IP doesn't currently populate, use the linux host IP and the port exposed with the above command. 
+
+````
+http://<ip address>:<port>/
+````
+
 ## Ansible Demo
 
 ### Installing the demo
