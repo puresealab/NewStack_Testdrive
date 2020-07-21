@@ -1,5 +1,6 @@
-clusterID: chitest01
 arrays:
-   FlashArrays: 
-       - MgmtEndPoint: "10.224.112.20"
-         APIToken: "4f54c6ce-5f6d-575e-bbe3-ce1051541d9d"
+  FlashArrays:
+    - MgmtEndPoint: "172.16.3.101"
+      APIToken: "cd6ba527-a21f-a014-d80b-13687c33402d"
+    - MgmtEndPoint: "172.16.3.111"
+      APIToken: "ff703c77-4db4-5e84-6734-b2d37acce147"
