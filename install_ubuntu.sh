@@ -6,20 +6,6 @@
 
 echo "#####################################"
 
-APACKG=( epel-release python3 python3-pip centos-release-ansible-29 ansible vim python2-jmespath )
-
-
-echo "####  Installing Python3 and Ansible  ####"
-
-for pkg in "${APACKG[@]}";do
-    if yum -q list installed "$pkg" > /dev/null 2>&1; then
-        echo -e "$pkg is already installed"
-    else
-        yum install "$pkg" -y && echo "Successfully installed $pkg"
-    fi
-done
-
-
 
 # Install SDK
 
@@ -45,24 +31,6 @@ set softtabstop=4       " number of spaces in tab when editing
 set tabstop=4           " number of visual spaces per TAB
 EOF
 
-# We need to change the hostname of this host. Note that it's "linux" on the FA
-# and it's "Linux" on the host.
-
-echo "#### Changing hostname ####"
-
-echo "linux" > /etc/hostname
-systemctl restart systemd-hostnamed
-sleep 3
-
-HNAME=$(hostname)
-
-for lname in 'linux';do
-    if [ "$HNAME" = "$lname" ]; then
-        echo "Hostname is linux, matches FlashArray."
-    else
-        echo "Hostname still needs to be changed!"
-    fi
-done
 
 
 #systemctl restart multipathd
@@ -78,11 +46,6 @@ echo "alias ap='ansible-playbook'" >> ~/.bashrc
 echo "alias P='cd ~/newstack_testdrive/ansible_playbooks'" >> ~/.bashrc
 source ~/.bashrc
 
-
-# Should be able to remove this after 1.23 is released
-# Don't need this anymore
-#v ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/modules/purefa_pod.py ~/purefa_pod.orig
-#cp ~/newstack_testdrive/purefa_pod.py ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/modules/
 
 #generate an ssh key for local login:
 echo "#### Generate SSH keys on local install ####"
@@ -109,23 +72,3 @@ helm repo add pure https://purestorage.github.io/helm-charts
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 helm repo update
 helm install pure-storage-driver pure/pure-csi --namespace default -f ~/newstack_testdrive/kubernetes_yaml/pso_values.yaml
-
-
-# We need to change the hostname of this host. Note that it's "linux" on the FA
-# and it's "Linux" on the host. It was changed by kubespray.
-
-echo "#### Changing hostname ####"
-
-echo "linux" > /etc/hostname
-systemctl restart systemd-hostnamed
-sleep 3
-
-HNAME=$(hostname)
-
-for lname in 'linux';do
-    if [ "$HNAME" = "$lname" ]; then
-        echo "Hostname is linux, matches FlashArray."
-    else
-        echo "Hostname still needs to be changed!"
-    fi
-done

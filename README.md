@@ -106,4 +106,13 @@ For kubernetes, modify the kubernetes_yaml/pso_values.yaml
 
 We also suspect that existing firewall rules can cause problems. I would run an iptables -F to be sure. Testing has mostly been done using the minimal CentOS 7 install.
 
+The rest of the centos 7 customizations are:
+* openssh-server
+* multipath -ll works (probably this command: mpathconf --enable --with_multipathd y)
+* iscsi-initiator-utils
+* No firewall
+* yum install device-mapper-multipath device-mapper-multipath-libs
+* systemctl start iscsid.socket
+* systemctl enable iscsi
+
 More to come...
