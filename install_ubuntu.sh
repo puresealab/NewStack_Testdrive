@@ -75,7 +75,7 @@ ansible-playbook -i inventory/testdrive/inventory.ini cluster.yml -b
 sudo cp /etc/kubernetes/admin.conf ~/.
 sudo chown $(id -u):$(id -g) ~/admin.conf
 echo 'export KUBECONFIG=$HOME/admin.conf' >> ~/.bashrc
-at << 'EOF' >> ~/.bashrc
+cat << 'EOF' >> ~/.bashrc
 export KUBECONFIG=$HOME/admin.conf
 source <(kubectl completion bash)
 complete -F __start_kubectl k
