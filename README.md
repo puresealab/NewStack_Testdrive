@@ -101,8 +101,10 @@ The openstack/example_commands.txt has a few examples to get you started. Also, 
 
 # Additional customizations
 
-In order to run in non-test drive labs, it is necessary to modify the array and API keys at the following locations:
+In order to run kuberenetes PSO in a non-test drive labs, it is necessary to modify the array and API keys at the following location:
 For kubernetes, modify the kubernetes_yaml/pso_values.yaml
+
+To run the ansible demo in a non-test drive lab, it is necesarry to modify the array and API keys at the following location: ansible_playbooks/testdrive_vars.yaml
 
 We also suspect that existing firewall rules can cause problems. I would run an iptables -F to be sure. Testing has mostly been done using the minimal CentOS 7 install.
 

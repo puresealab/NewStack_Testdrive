@@ -12,7 +12,12 @@ echo "#####################################"
 echo "####  Installing the Pure Storage SDK  ####"
 pip3 install purestorage
 pip3 install jmespath
+pip3 install ansible
 # Install the Pure Storage collection
+
+# Ansible is being installed with PIP3, so we need to update the path for the users
+echo 'export PATH=$PATH:$HOME/.local/bin' >> ~/.bashrc
+source ~/.bashrc
 
 echo "#### Installing the Purestorage Ansible Collection  ####"
 
