@@ -71,6 +71,19 @@ pip3 install -r requirements.txt
 echo "#### Install kubernetes ####"
 ansible-playbook -i inventory/testdrive/inventory.ini cluster.yml -b
 
+# configure kubectl. needs to be updated as it only works
+sudo cp /etc/kubernetes/admin.conf ~/.
+sudo chown $(id -u):$(id -g) ~/admin.conf
+echo 'export KUBECONFIG=$HOME/admin.conf' >> ~/.bashrc
+at << 'EOF' >> ~/.bashrc
+export KUBECONFIG=$HOME/admin.conf
+source <(kubectl completion bash)
+complete -F __start_kubectl k
+alias kgp='kubectl get pods --all-namespaces'
+alias kgv="kubectl get VolumeSnapShots"
+EOF
+source ~/.bashrc
+
 #Install PSO
 echo "#### Update helm repos and install PSO ####"
 helm repo add pure https://purestorage.github.io/helm-charts
