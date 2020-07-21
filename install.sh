@@ -80,8 +80,9 @@ source ~/.bashrc
 
 
 # Should be able to remove this after 1.23 is released
-mv ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/modules/purefa_pod.py ~/purefa_pod.orig
-cp ~/newstack_testdrive/purefa_pod.py ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/modules/
+# Don't need this anymore
+#v ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/modules/purefa_pod.py ~/purefa_pod.orig
+#cp ~/newstack_testdrive/purefa_pod.py ~/.ansible/collections/ansible_collections/purestorage/flasharray/plugins/modules/
 
 #generate an ssh key for local login:
 echo "#### Generate SSH keys on local install ####"
