@@ -62,7 +62,7 @@ Check status by running
 kubectl get service pso-explorer -n psoexpl
 ```
 
-External IP doesn't currently populate, use the linux host IP and the port exposed with the above command. 
+External IP doesn't currently populate, use the linux host IP and the port exposed with the above command.
 
 ````
 http://<ip address>:<port>/
@@ -103,5 +103,7 @@ The openstack/example_commands.txt has a few examples to get you started. Also, 
 
 In order to run in non-test drive labs, it is necessary to modify the array and API keys at the following locations:
 For kubernetes, modify the kubernetes_yaml/pso_values.yaml
+
+We also suspect that existing firewall rules can cause problems. I would run an iptables -F to be sure. Testing has mostly been done using the minimal CentOS 7 install.
 
 More to come...
