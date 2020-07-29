@@ -105,29 +105,24 @@ ansible-playbook -i inventory/testdrive/inventory.ini cluster.yml -b
 
 #Install PSO
 echo "#### Update helm repos and install PSO ####"
-#helm repo add pure https://purestorage.github.io/helm-charts
-#helm repo add stable https://kubernetes-charts.storage.googleapis.com/
-#helm repo update
-#helm install pure-storage-driver pure/pure-csi --namespace default -f ~/newstack_testdrive/kubernetes_yaml/pso_values.yaml
 helm repo add pure https://purestorage.github.io/pso-csi
 helm repo update
-#helm search repo pureStorageDriver -l --devel
 helm install pure-storage-driver pure/pureStorageDriver --version 6.0.0-rc3 --namespace default -f ~/newstack_testdrive/kubernetes_yaml/pso_values.yaml
 
 # Move to beta API for snapshot provider:
 # Remove old API
-kubectl delete crd volumesnapshotcontents.snapshot.storage.k8s.io
-kubectl delete crd volumesnapshots.snapshot.storage.k8s.io
-kubectl delete crd volumesnapshotclasses.snapshot.storage.k8s.io
+#kubectl delete crd volumesnapshotcontents.snapshot.storage.k8s.io
+#kubectl delete crd volumesnapshots.snapshot.storage.k8s.io
+#kubectl delete crd volumesnapshotclasses.snapshot.storage.k8s.io
 
 # Recreate CRD with Beta release
-kubectl create -f  https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-2.0/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
-kubectl create -f  https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-2.0/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
-kubectl create -f  https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-2.0/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
+#kubectl create -f  https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-2.0/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
+#kubectl create -f  https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-2.0/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
+#kubectl create -f  https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-2.0/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
 
 #Add the providers
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-2.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-2.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
+#kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-2.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
+#kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-2.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
 
 
 # We need to change the hostname of this host. Note that it's "linux" on the FA
