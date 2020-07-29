@@ -13,7 +13,7 @@ The following files are in the kubernetes_yaml directory
 ### Installing the demo
 clone the repo with:
 ```
-git clone https://puresealab/newstack_testdrive
+git clone https://github.com/puresealab/newstack_testdrive
 ```
 
 Run the install.sh script
