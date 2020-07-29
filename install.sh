@@ -103,11 +103,6 @@ pip3 install -r requirements.txt
 echo "#### Install kubernetes ####"
 ansible-playbook -i inventory/testdrive/inventory.ini cluster.yml -b
 
-#Install PSO
-echo "#### Update helm repos and install PSO ####"
-helm repo add pure https://purestorage.github.io/pso-csi
-helm repo update
-helm install pure-storage-driver pure/pureStorageDriver --version 6.0.0-rc3 --namespace default -f ~/newstack_testdrive/kubernetes_yaml/pso_values.yaml
 
 # Move to beta API for snapshot provider:
 # Remove old API
@@ -116,14 +111,22 @@ helm install pure-storage-driver pure/pureStorageDriver --version 6.0.0-rc3 --na
 #kubectl delete crd volumesnapshotclasses.snapshot.storage.k8s.io
 
 # Recreate CRD with Beta release
-#kubectl create -f  https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-2.0/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
-#kubectl create -f  https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-2.0/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
-#kubectl create -f  https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-2.0/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
+kubectl create -f  https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-2.0/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
+kubectl create -f  https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-2.0/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
+kubectl create -f  https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-2.0/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
 
-#Add the providers
-#kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-2.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
-#kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-2.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
+#Add the snap controller
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-2.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-2.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
 
+
+#Install PSO
+echo "#### Update helm repos and install PSO ####"
+helm repo add pure https://purestorage.github.io/pso-csi
+helm repo update
+helm install pure-storage-driver pure/pureStorageDriver --version 6.0.0-rc3 --namespace default -f ~/newstack_testdrive/kubernetes_yaml/pso_values.yaml
+
+#Install the purestorage snapshot class (this renders step 4 unnecessary)
 
 # We need to change the hostname of this host. Note that it's "linux" on the FA
 # and it's "Linux" on the host. It was changed by kubespray.
