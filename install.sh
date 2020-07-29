@@ -119,12 +119,15 @@ kubectl create -f  https://raw.githubusercontent.com/kubernetes-csi/external-sna
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-2.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-2.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
 
+sleep 15
 
 #Install PSO
 echo "#### Update helm repos and install PSO ####"
 helm repo add pure https://purestorage.github.io/pso-csi
 helm repo update
 helm install pure-storage-driver pure/pureStorageDriver --version 6.0.0-rc3 --namespace default -f ~/newstack_testdrive/kubernetes_yaml/pso_values.yaml
+
+sleep 30
 
 #Install the purestorage snapshot class (this renders step 4 unnecessary)
 kubectl apply -f https://raw.githubusercontent.com/purestorage/pso-csi/master/pureStorageDriver/snapshotclass.yaml
