@@ -105,10 +105,14 @@ ansible-playbook -i inventory/testdrive/inventory.ini cluster.yml -b
 
 #Install PSO
 echo "#### Update helm repos and install PSO ####"
-helm repo add pure https://purestorage.github.io/helm-charts
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+#helm repo add pure https://purestorage.github.io/helm-charts
+#helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+#helm repo update
+#helm install pure-storage-driver pure/pure-csi --namespace default -f ~/newstack_testdrive/kubernetes_yaml/pso_values.yaml
+helm repo add pure https://purestorage.github.io/pso-csi
 helm repo update
-helm install pure-storage-driver pure/pure-csi --namespace default -f ~/newstack_testdrive/kubernetes_yaml/pso_values.yaml
+#helm search repo pureStorageDriver -l
+helm install pure-storage-driver pure/pureStorageDriver --namespace default -f ~/newstack_testdrive/kubernetes_yaml/pso_values.yaml
 
 # Move to beta API for snapshot provider:
 # Remove old API
