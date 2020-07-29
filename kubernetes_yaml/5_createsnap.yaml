@@ -5,4 +5,4 @@ metadata:
 spec:
   volumeSnapshotClassName: pure-snapshotclass
   source:
-    persistentVolumeClaimName: persistentVolumeClaimName
+    persistentVolumeClaimName: minio-pv-claim
