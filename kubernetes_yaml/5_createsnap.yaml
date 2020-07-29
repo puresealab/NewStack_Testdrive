@@ -5,4 +5,4 @@ metadata:
 spec:
   volumeSnapshotClassName: pure-snapshotclass
   source:
-    name: persistentVolumeClaimName
+    persistentVolumeClaimName: persistentVolumeClaimName
