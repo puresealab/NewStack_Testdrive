@@ -5,9 +5,5 @@ metadata:
 spec:
   snapshotClassName: pure-snapshotclass
   source:
-<<<<<<< HEAD
-    persistentVolumeClaimName: persistentVolumeClaimName
-=======
     name: minio-pv-claim
     kind: PersistentVolumeClaim
->>>>>>> parent of b61057e... Updated Snap APIs to Beta
