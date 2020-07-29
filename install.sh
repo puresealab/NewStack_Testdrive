@@ -111,8 +111,8 @@ echo "#### Update helm repos and install PSO ####"
 #helm install pure-storage-driver pure/pure-csi --namespace default -f ~/newstack_testdrive/kubernetes_yaml/pso_values.yaml
 helm repo add pure https://purestorage.github.io/pso-csi
 helm repo update
-#helm search repo pureStorageDriver -l
-helm install pure-storage-driver pure/pureStorageDriver --namespace default -f ~/newstack_testdrive/kubernetes_yaml/pso_values.yaml
+#helm search repo pureStorageDriver -l --devel
+helm install pure-storage-driver pure/pureStorageDriver --version 6.0.0-rc3 --namespace default -f ~/newstack_testdrive/kubernetes_yaml/pso_values.yaml
 
 # Move to beta API for snapshot provider:
 # Remove old API
