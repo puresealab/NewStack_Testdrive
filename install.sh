@@ -129,8 +129,8 @@ helm install pure-storage-driver pure/pureStorageDriver --namespace default -f ~
 
 sleep 30
 
-#Install the purestorage snapshot class (this renders step 4 unnecessary)
-kubectl apply -f https://raw.githubusercontent.com/purestorage/pso-csi/master/pureStorageDriver/snapshotclass.yaml
+#Install the purestorage snapshot class 
+kubectl apply -f https://raw.githubusercontent.com/purestorage/pso-csi/master/pure-pso/snapshotclass.yaml
 
 # We need to change the hostname of this host. Note that it's "linux" on the FA
 # and it's "Linux" on the host. It was changed by kubespray.
