@@ -125,11 +125,11 @@ sleep 15
 echo "#### Update helm repos and install PSO ####"
 helm repo add pure https://purestorage.github.io/pso-csi
 helm repo update
-helm install pure-storage-driver pure/pureStorageDriver --namespace default -f ~/newstack_testdrive/kubernetes_yaml/pso_values.yaml
+helm install pure-storage-driver pure/pure-pso --namespace default -f ~/newstack_testdrive/kubernetes_yaml/pso_values.yaml
 
 sleep 30
 
-#Install the purestorage snapshot class 
+#Install the purestorage snapshot class
 kubectl apply -f https://raw.githubusercontent.com/purestorage/pso-csi/master/pure-pso/snapshotclass.yaml
 
 # We need to change the hostname of this host. Note that it's "linux" on the FA
