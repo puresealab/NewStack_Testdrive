@@ -91,13 +91,6 @@ You can run each playbook with 'ansible-playbook <yaml file>'
 
 More notes to come...
 
-## Openstack demo
-
-This is a little rudamentory. Openstack will build, but it requires a couple of manual steps, and the dashboard and replication will not work... yet.
-
-It is based on the train release due to RHEL7 compatibility and is still building with Python 2.7.
-
-The openstack/example_commands.txt has a few examples to get you started. Also, pay attention to the output of the install_openstack.sh install script.
 
 # Additional customizations
 
