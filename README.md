@@ -1,10 +1,10 @@
-# Newstack Testdrive Repository
+# NewStack Testdrive Repository
 
-This repo has scripts to spin up newstack in Pure Storage's test drive
+This repo has scripts to spin up NewStack in Pure Storage's test drive
 
 It currently works with Ansible and Kubernetes
 
-Many thanks are due to kbkuebler for the idea, as well as ansible yaml files.
+Many thanks are due to kbkuebler for the idea, as well as Ansible yaml files.
 
 ## Kubernetes with PSO Demo.
 
@@ -18,7 +18,7 @@ git clone https://github.com/puresealab/newstack_testdrive
 
 Run the install.sh script
 
-Note that this will also install all of the ansible bits
+Note that this will also install all of the Ansible bits
 
 ### Running the Demo
 
