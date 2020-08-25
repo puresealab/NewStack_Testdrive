@@ -125,7 +125,7 @@ sleep 15
 echo "#### Update helm repos and install PSO ####"
 helm repo add pure https://purestorage.github.io/pso-csi
 helm repo update
-helm install pure-storage-driver pure/pureStorageDriver --version 6.0.0-rc3 --namespace default -f ~/newstack_testdrive/kubernetes_yaml/pso_values.yaml
+helm install pure-storage-driver pure/pureStorageDriver --namespace default -f ~/newstack_testdrive/kubernetes_yaml/pso_values.yaml
 
 sleep 30
 
