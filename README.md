@@ -8,7 +8,7 @@ Many thanks are due to kbkuebler for the idea, as well as Ansible yaml files.
 
 ## Kubernetes with PSO Demo.
 
-The following files are in the kubernetes_yaml directory
+
 
 ### Installing the demo
 clone the repo with:
