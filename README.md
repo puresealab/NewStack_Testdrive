@@ -1,3 +1,8 @@
+# NOTICE
+
+** This repository has been deprecated. Please use https://github.com/PureStorage-OpenConnect/TestDriveNewStack
+
+
 # NewStack Testdrive Repository
 
 This repo has scripts to spin up NewStack in Pure Storage's test drive
@@ -13,10 +18,10 @@ Many thanks are due to kbkuebler for the idea, as well as Ansible yaml files.
 ### Installing the demo
 clone the repo with:
 ```
-git clone https://github.com/puresealab/newstack_testdrive
+git clone https://github.com/PureStorage-OpenConnect/TestDriveNewStack
 ```
 
-Run the install.sh script
+Run the setup.sh script
 
 Note that this will also install all of the Ansible bits
 
